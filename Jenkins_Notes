@@ -1,0 +1,85 @@
+what is jenkins?
+	continues integration tool. it is used to schedule and automated builds, deployments etc. it is used for by developers and testers.
+
+
+
+What kinds processes can be automated using jenkins?
+	running unit tests
+	building the application
+	running automated ui tests
+	deploying to different environments
+
+how jenkins is used in your company for testing?
+	In my project, we use jenkins for scheduling and running out automated smoke tests.
+	our smoke tests run every day.
+
+
+what tests you have on jenkins?
+	in my project we have our smoke and regression tests for jenkins.
+
+what kind of tests can be done in jenkins?
+	so jenkins can run any automated test. for example we can have unit tests, smoke tests, intergration tests, regression tests, sanity.
+
+what layers of tests can be tested using jenkins?
+	testing different layers of the application is done with our test code. jenkins does not care if we are testing ui or database or api. it only kickcs of the tests and sends reports.
+	so if my automated test is a ui test it means jenkins is running ui tests. or if my automated test is a api tests it means jenkins is running api tests.
+
+Who sets up Jenkins?
+	In my company we have DevOps/Operations Support team who is responsible for maintaining jenkins. those installed and configured jenkins. for deployments etc they work with developers to create jobs for building and deploying the applications.
+	For creating smoke tests, they work with automation engineers.
+
+
+Who sets up smoke tests in Jenkins?
+	As an automation engineer, I work with the devops/operations supports to create my smoke tests.
+	for running my tests i need certain plugins installed on Jenkins, I also need java, maven configured on jenkins, I also need browsers installed on the server where the tests will run.
+	In my project, only devops/operations support team members have right to do the configurations above. that is why I have to work with them.
+
+	Once the configuration of the Jenkins is completed I can create and run the smoke test job.
+
+
+how your smoke tests are configured on jenkins?
+	Our jenkins job is configured to get my automated tests from github and run every day using maven.
+	in configuration, first I created a new job and gave name "smoke tests". then I selected option git in the Source Code Management section and entered the path to my framework on github. and also entered the git credentials.
+	next configuration is about build triggers where I chose option Build periodically and enter the time how often I want to run my tests.
+	In the Build section, i choose option invoke top level maven command since my automation framework is created using maven.
+	in the section I enter the maven command (without the mvn part). so fi normal command to run my test using terminal is 'mvn test', in jenkins i only enter 'test'. here I also enter the tag i want to run using command line.
+		test -Dcucumber.options="--tags @smoke"
+
+	if  i want to run regression tests, command is:
+		test -Dcucumber.options="--tags @regression"
+
+
+	in the Post-build Actions, I do couple configuration,
+	1. I add Cucumber reports option. This is available because we have installed cucumber html reports plugin to our jenkins. Cucumber reports plugin will generate html report for every build. Every time we run smoke tests on jenkins, we get a new report. and all reports for all build are saved.
+
+	2. I add email option as the next Post-build Actions. Here I configure it so that every one in my agile team is notified about the test results.
+
+
+who gets the email reports for tests?
+	every one in my agile team is notified about the test results.
+
+
+____
+
+
+How about question "Have you worked on DevOps pipeline?"
+	i have build smoke tests on jenkins which are part of the devops pipeline. devops pipeline is built and managed by DevOps/Operations Support. But our smoke test are part of the pipeline. so i participated by creaging and confiring the smoke tests on jenkins.
+
+
+
+Today’s interview question. What is the difference between integration test and end to end test?
+	test to verify the in
+
+	How do you run them on Jenkins?
+
+
+	KUZZAT'S RULES
+	1. don't worship management
+	2. don't be desperate
+	3. act like you have million dollars in your account
+	4. reset button before any call
+	6. smile when you pick up the phone
+	7. no peer pressure
+
+
+
